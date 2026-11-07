@@ -45,6 +45,14 @@ We collected known fluid volumes and compared them with flow sensor pulses to tu
 - The controller dashboard is available at `http://192.168.4.1` when connected to its access point.
 - U7 sends form fields `boot`, `b`, `g`, `y`, and, when valid, `ty` and `tg` to U2's `POST /api/flow` endpoint.
 
+## Schematics and sensor diagnostics
+
+- [Control PCB schematic photos](hardware/) — system overview, U2/U7 pin assignments, field connectors, and solenoid drivers. These are photos of circuit diagrams, not a fabrication-ready PCB layout or Gerber files.
+- [U7 flow pulse check](diagnostics/U7_Flow_Pulse_Check/U7_Flow_Pulse_Check.ino) — reports raw and filtered counts for FS1 blue/flush, FS2 yellow, and FS3 green on the Serial Monitor.
+- [U7 temperature check](diagnostics/U7_Temperature_Check/U7_Temperature_Check.ino) — reads the two DS18B20 probes and prints the measured temperature difference.
+
+The diagnostic sketches temporarily replace U7's normal Wi-Fi telemetry firmware; restore [U7 sensor node](firmware/U7_Sensor_Node/U7_Sensor_Node.ino) before running the full controller. The 1 ms pulse gap in the diagnostic sketch is for spotting noise and must not be treated as a validated calibration filter.
+
 ## Implementation notes
 
 The latest U2 controller uses an HTTP `/api/flow` endpoint for U7 telemetry. An older U7 UART sketch that prints `$FLOW,...` packets is **not compatible** with this U2 build.
