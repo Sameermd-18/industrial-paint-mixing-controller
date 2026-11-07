@@ -51,6 +51,3 @@ The latest U2 controller uses an HTTP `/api/flow` endpoint for U7 telemetry. An 
 
 The available U2 sketch includes a timed flush, manual overrides, and hard-coded calibration factors. This README describes the implementation and does not claim that every challenge interlock (empty source tank, full mixing tank, or no-flow trip) was validated.
 
-## My contribution
-
-ESP32 control firmware, pump and valve mapping, flow sensor interfacing and calibration, dashboard development, and integration testing of the automated process sequence.
